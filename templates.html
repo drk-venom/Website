@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venom | Premium Website Templates</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles - Matching Your Portfolio */
+        :root {
+            --neon-green: #00ff9d;
+            --neon-purple: #b300ff;
+            --dark-bg: #0a0a12;
+            --card-bg: #161622;
+            --text-color: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: var(--dark-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-top: 70px;
+        }
+        
+        /* Navigation Bar - Same as Portfolio */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 18, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-color);
+            text-decoration: none;
+            background: linear-gradient(45deg, var(--neon-green), var(--neon-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(0, 255, 157, 0.5);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            padding: 0.3rem 0;
+        }
+        
+        .nav-links a:hover {
+            color: var(--neon-green);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--neon-green);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-color);
+        }
+        
+        /* Main Content */
+        .container {
+            width: 100%;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        /* Header Section */
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--neon-green), var(--neon-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .page-header p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Template Categories */
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .category-btn {
+            padding: 0.6rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 20px;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .category-btn.active, .category-btn:hover {
+            background: linear-gradient(45deg, var(--neon-purple), var(--neon-green));
+            color: black;
+        }
+        
+        /* Templates Grid */
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .template-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .template-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(179, 0, 255, 0.4);
+        }
+        
+        .template-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--neon-purple), var(--neon-green));
+            z-index: -1;
+            border-radius: 12px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .template-card:hover::before {
+            opacity: 0.3;
+        }
+        
+        .template-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .template-info {
+            padding: 1.5rem;
+        }
+        
+        .template-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .template-info p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+        
+        .template-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .template-price {
+            font-weight: bold;
+            color: var(--neon-green);
+        }
+
+        /* Contact Popup */
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+        
+        .popup.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .popup-content {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 350px;
+            text-align: center;
+            position: relative;
+            border: 1px solid rgba(0, 255, 157, 0.3);
+            box-shadow: 0 0 15px rgba(0, 255, 157, 0.2);
+        }
+        
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.3rem;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .popup-close:hover {
+            color: var(--neon-green);
+        }
+        
+        .popup h3 {
+            margin-bottom: 0.8rem;
+            color: var(--neon-green);
+            font-size: 1.3rem;
+        }
+        
+        .popup p {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .popup-email {
+            display: inline-block;
+            padding: 0.7rem 1.2rem;
+            background: rgba(0, 255, 157, 0.1);
+            color: var(--neon-green);
+            border-radius: 5px;
+            margin-top: 0.5rem;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .popup-email:hover {
+            background: rgba(0, 255, 157, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* About Popup */
+        .about-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+        
+        .about-popup.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .about-content {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            border: 1px solid rgba(0, 255, 157, 0.3);
+            box-shadow: 0 0 15px rgba(0, 255, 157, 0.2);
+        }
+        
+        .about-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.3rem;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .about-close:hover {
+            color: var(--neon-green);
+        }
+        
+        .about-content h3 {
+            color: var(--neon-green);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .about-content p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        /* Services Popup */
+        .services-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+        
+        .services-popup.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .services-content {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            border: 1px solid rgba(0, 255, 157, 0.3);
+            box-shadow: 0 0 15px rgba(0, 255, 157, 0.2);
+        }
+        
+        .services-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.3rem;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .services-close:hover {
+            color: var(--neon-green);
+        }
+        
+        .services-content h3 {
+            color: var(--neon-green);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .services-content ul {
+            text-align: left;
+            margin-left: 1rem;
+        }
+        
+        .services-content li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .services-content li::before {
+            content: '•';
+            color: var(--neon-green);
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+        
+        /* Apply Button */
+        .apply-btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(45deg, var(--neon-purple), var(--neon-green));
+            color: black;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .apply-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(179, 0, 255, 0.4);
+        }
+        
+        /* Animations */
+        @keyframes glow {
+            0%, 100% { filter: blur(5px); opacity: 0.7; }
+            50% { filter: blur(8px); opacity: 1; }
+        }
+        
+        /* Media Queries */
+        @media (min-width: 768px) {
+            body {
+                padding-top: 80px;
+            }
+            
+            nav {
+                padding: 1.2rem 2rem;
+            }
+            
+            .nav-logo {
+                font-size: 1.7rem;
+            }
+            
+            .nav-links {
+                gap: 2rem;
+            }
+            
+            .page-header h1 {
+                font-size: 3rem;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: rgba(10, 10, 18, 0.95);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                transition: left 0.3s;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links a {
+                font-size: 1.2rem;
+                padding: 0.5rem 0;
+            }
+            
+            .categories {
+                gap: 0.5rem;
+            }
+            
+            .category-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar - Same as Portfolio -->
+    <nav>
+        <a href="index.html" class="nav-logo">VENOM</a>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="#" id="about-link">About Us</a>
+            <a href="#" id="services-link">Services</a>
+            <a href="#" id="contact-link">Contact Us</a>
+        </div>
+        <div class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <header class="page-header">
+            <h1>Premium Website Templates</h1>
+            <p>Professionally designed templates to kickstart your next project with Venom's signature style</p>
+        </header>
+
+        <div class="categories">
+            <button class="category-btn active">All</button>
+            <button class="category-btn">Portfolio</button>
+            <button class="category-btn">E-commerce</button>
+            <button class="category-btn">Business</button>
+            <button class="category-btn">Creative</button>
+            <button class="category-btn">Blog</button>
+        </div>
+
+        <div class="templates-grid">
+            <!-- Template 1 -->
+            <div class="template-card">
+                <img src="../images/dark-portfolio.jpeg" alt="Dark Portfolio Template" class="template-img">
+                <div class="template-info">
+                    <h3>Dark Portfolio</h3>
+                    <p>Modern dark-themed portfolio template with neon accents</p>
+                    <div class="template-meta">
+                        <span class="template-price">$29</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 2 -->
+            <div class="template-card">
+                <img src="../images/e-commerce.jpeg" alt="E-Commerce Template" class="template-img">
+                <div class="template-info">
+                    <h3>E-Commerce Pro</h3>
+                    <p>Complete online store template with product showcase</p>
+                    <div class="template-meta">
+                        <span class="template-price">$49</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 3 -->
+            <div class="template-card">
+                <img src="../images/agency.jpeg" alt="Creative Agency Template" class="template-img">
+                <div class="template-info">
+                    <h3>Creative Agency</h3>
+                    <p>Bold design for creative agencies and studios</p>
+                    <div class="template-meta">
+                        <span class="template-price">$39</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 4 -->
+            <div class="template-card">
+                <img src="../images/minimal.jpeg" alt="Minimal Blog Template" class="template-img">
+                <div class="template-info">
+                    <h3>Minimal Blog</h3>
+                    <p>Clean, content-focused blog template</p>
+                    <div class="template-meta">
+                        <span class="template-price">$29</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 5 -->
+            <div class="template-card">
+                <img src="../images/tech.jpeg" alt="Tech Startup Template" class="template-img">
+                <div class="template-info">
+                    <h3>Tech Startup</h3>
+                    <p>Modern template for tech companies and startups</p>
+                    <div class="template-meta">
+                        <span class="template-price">$45</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 6 -->
+            <div class="template-card">
+                <img src="../images/photography.jpeg" alt="Photography Template" class="template-img">
+                <div class="template-info">
+                    <h3>Photography</h3>
+                    <p>Gallery-focused template for photographers</p>
+                    <div class="template-meta">
+                        <span class="template-price">$35</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Popup -->
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <span class="popup-close" id="popup-close">&times;</span>
+            <h3>Contact Me</h3>
+            <p>Feel free to reach out for collaborations or inquiries</p>
+            <a href="mailto:cybershield47@gmail.com" class="popup-email">cybershield47@gmail.com</a>
+        </div>
+    </div>
+
+    <!-- About Popup -->
+    <div class="about-popup" id="about-popup">
+        <div class="about-content">
+            <span class="about-close" id="about-close">&times;</span>
+            <h3>About Venom</h3>
+            <p>Welcome to Venom, where I craft innovative digital solutions that bring your vision to life. I'm Gowher Bashir, founder of Venom, and I'm dedicated to delivering exceptional web development services that exceed client expectations. With a passion for technology, I build fast, secure, and scalable websites that drive real results.</p>
+        </div>
+    </div>
+
+    <!-- Services Popup -->
+    <div class="services-popup" id="services-popup">
+        <div class="services-content">
+            <span class="services-close" id="services-close">&times;</span>
+            <h3>Website Application</h3>
+            <p>Apply for a custom website tailored to your needs</p>
+            <a href="web form.html" class="apply-btn">Apply for Website</a>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            menuToggle.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Category Filtering
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                // Here you would add filtering logic
+            });
+        });
+
+        // Contact Popup
+        const contactLink = document.getElementById('contact-link');
+        const popup = document.getElementById('popup');
+        const popupClose = document.getElementById('popup-close');
+        
+        contactLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            popup.classList.add('active');
+        });
+        
+        popupClose.addEventListener('click', function() {
+            popup.classList.remove('active');
+        });
+        
+        popup.addEventListener('click', function(e) {
+            if (e.target === popup) {
+                popup.classList.remove('active');
+            }
+        });
+
+        // About Popup
+        const aboutLink = document.getElementById('about-link');
+        const aboutPopup = document.getElementById('about-popup');
+        const aboutClose = document.getElementById('about-close');
+        
+        aboutLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            aboutPopup.classList.add('active');
+        });
+        
+        aboutClose.addEventListener('click', function() {
+            aboutPopup.classList.remove('active');
+        });
+        
+        aboutPopup.addEventListener('click', function(e) {
+            if (e.target === aboutPopup) {
+                aboutPopup.classList.remove('active');
+            }
+        });
+
+        // Services Popup
+        const servicesLink = document.getElementById('services-link');
+        const servicesPopup = document.getElementById('services-popup');
+        const servicesClose = document.getElementById('services-close');
+        
+        servicesLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            servicesPopup.classList.add('active');
+        });
+        
+        servicesClose.addEventListener('click', function() {
+            servicesPopup.classList.remove('active');
+        });
+        
+        servicesPopup.addEventListener('click', function(e) {
+            if (e.target === servicesPopup) {
+                servicesPopup.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
